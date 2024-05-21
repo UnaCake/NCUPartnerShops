@@ -1,0 +1,123 @@
+-- html 頁面導航列
+
+<li class="nav-item">
+    <a class="nav-link collapsed" data-bs-target="#restaurant-nav" data-bs-toggle="collapse" href="#">
+        <i class="bi bi-egg-fried"></i><span>交通</span><i class="bi bi-chevron-down ms-auto"></i>
+    </a>
+    <ul id="restaurant-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+        <li>
+            <a id="traffic1" href="#">
+                <i class="bi bi-bookmark"></i><span>中國東方航空</span>
+            </a>
+        </li>
+        <li>
+            <a id="traffic2" href="#">
+                <i class="bi bi-bookmark"></i><span>飛遊網 台灣航空</span>
+            </a>
+        </li>
+        <li>
+            <a id="traffic3" href="#">
+                <i class="bi bi-bookmark"></i><span>國泰航空</span>
+            </a>
+        </li>
+        <li>
+            <a id="traffic4" href="#">
+                <i class="bi bi-bookmark"></i><span>喜鴻(綜合)旅行社</span>
+            </a>
+        </li>
+        <li>
+            <a id="traffic5" href="#">
+                <i class="bi bi-bookmark"></i><span>愛之旅旅行社有限公司</span>
+            </a>
+        </li>
+    </ul>
+</li>
+
+
+-- JS 互動
+
+var locations = [
+
+{ id: 'traffic1',coords: { lat: 25.057540056405674, lng: 121.53756816706775 },title: '中國東方航空'},
+{ id: 'traffic2',coords: { lat: 24.968238626139875, lng: 121.19432434232908},title: '飛遊網 台灣航空'},
+{ id: 'traffic3',coords: { lat: 25.05817927290209, lng: 121.54778479666119},title: '國泰航空'},
+{ id: 'traffic4',coords: { lat: 25.00908808328985, lng: 121.31058853054088},title: '喜鴻(綜合)旅行社'},
+{ id: 'traffic5', coords: { lat: 23.561319900000026, lng: 119.59439539634326},title: '愛之旅旅行社有限公司'},
+]
+
+
+
+function updateInfoContainer(locationId) {
+const infoContainer = document.getElementById('info-container');
+let content = '';
+
+if (locationId === 'traffic1') {
+content = `
+<h1>中國東方航空</h1>
+<p>* 台北市民生東路三段2號6樓A室。03-4128118。</p>
+<p>優惠內容：
+    1.提供在校生/校友/教職員於中國東方航空台灣官網上註冊成為『東方萬里行會員』，並登入會員購買由中國東方航空/上海航空實際承運由台灣始發直航大陸航點或經大陸中轉至大陸地區航線、日本、韓國、歐洲、北美、紐澳、東南亞和南亞中東航線之指定艙等，享有單程或來回機票價格優惠。
+    2.促銷代碼：購票流程時使用，如未於付款前進行驗證使用，則無法事後主張享有其優惠。促優惠折扣僅限機票價格。機場稅、燃油附加費用及其他雜項費用不列入折扣範圍。</p>
+<p>優惠內容說明：(1)【購票日期】
+    自2024年05月01日起至2025年04月30日止
+    (2)【旅行日期】
+    2024年05月01日起至2024年09月27日止
+    2024年10月08日起至2024年12月31日止
+    2025年01月01日起至2025年01月25日止
+    2025年02月12日起至2054年04月30日止
+    實際訂位均以東航台灣官方網站系統提供為準。
+    (3)本優惠專案限使用指定促銷代碼(詳如附件說明)於中國東方航空台灣官網且登入會員後購票適用。</p>
+<p>優惠期限： 2024.05.01-2025.04.30 ，使用優惠前請電洽 中國東方航空確認</p>
+<p>網站連結：<a href="https://tw.ceair.com/hk/" target="_blank">按此前往</a></p>
+`;
+} else if (locationId === 'traffic2') {
+content = `
+<h1>飛遊網 台灣航空</h1>
+<p>* 桃園市中壢區中大路300號(產學中心2樓R226室)。0930138177。</p>
+<p>優惠內容：
+    1. 護照(14歲以上) 售價$1800,教職員生優惠$1700
+    (未滿14歲) 售價$1400,教職員生優惠$1350
+    2. 台胞證 售價$1800,教職員生優惠$1700
+    3.口譯機 售價$60/天，教職員生$55/天(租五天起)
+    4.上網卡 蝦皮價格，教職員生折$15/張</p>
+<p>優惠期限： 2023年01月02日起至 2024年12月31日 ，使用優惠前請電洽 飛遊網 台灣航空福利社確認</p>
+<p>網站連結：<a href="https://www.plynet.com.tw/" target="_blank">按此前往</a></p>
+`;
+} else if (locationId === 'traffic3') {
+content = `
+<h1>國泰航空</h1>
+<p>* 台北:台北市民生東路三段129號12樓環球商業大樓。02-27152333。</p>
+<p>* 台中:台中市民權路239號8樓A1室</p>
+<p>* 高雄:高雄市中華三路21號6樓</p>
+<p>優惠內容：僅提供學生留學機票網上專屬優惠</p>
+<p>優惠期限 : 2018.04.20-無期限 ，使用優惠前請電洽 國泰航空確認</p>
+<p>網站連結：<a href="https://www.cathaypacific.com/cx/zh_TW.html" target="_blank">按此前往</a></p>
+`;
+} else if (locationId === 'traffic4') {
+content = `
+<h1>喜鴻(綜合)旅行社</h1>
+<p>* 桃園市經國路9號11樓之2。03-3167121。</p>
+<p>優惠內容：憑校友證
+    1.購買喜鴻網頁之旅遊商品,必須透過網路交易機制,刷卡消費可享特約銀行信用卡分期0利率(3期)。
+    2.會員透過網路報名國外團體旅遊可享比一般價便宜新台幣1200元、國外自由行比一般價便宜1000元,國內團體旅遊比一般價便宜新台幣300元之優惠,惟國際機票、國內外定房及量身訂做、促銷及特惠團體，不適用上述優惠範圍。
+    3.憑企業帳號45002931及密碼4227151即可享優惠</p>
+<p>優惠期限：2017.04.19-永久 ，使用優惠前請電洽 喜鴻(綜合)旅行社確認。</p>
+<p>網站連結：<a
+        href="https://www.besttour.com.tw/e_web/?utm_source=google&utm_medium=cpc&utm_campaign=21163175911&utm_term=%E5%96%9C%E9%B4%BB%20%E6%97%85%E8%A1%8C%E7%A4%BE&utm_content=695684372371&fc=mk&gad_source=1&gclid=Cj0KCQjwjLGyBhCYARIsAPqTz1-yRvvT3PLomZu2LqHuGpMHyqQ5H9B8_A3VO8ptAJSr2y1RAPFPQ6UaAmClEALw_wcB"
+        target="_blank">按此前往</a></p>
+`;
+} else if (locationId === 'traffic5') {
+content = `
+<h1>愛之旅旅行社有限公司</h1>
+<p>* 2017.04.19-永久 ，使用優惠前請電洽 喜鴻(綜合)旅行社確認</p>
+<p>優惠內容：
+    1.親持中央大學學生證、校友證參加自由行行程或散客湊團,確定成行並完款後,即享有優惠金額200元/人
+    2.凡改住6-8人房,即可再享有優惠金額200元/人
+    3.總人數滿11人以上(確定成行並完款後),以11人為一單位提供天然珍珠項鍊禮盒給予摸彩
+    4.總人數滿33人以上(確定成行並完款後)，另有優惠(須親自洽詢)</p>
+<p>優惠期限：2015.12.01-無期限 ，使用優惠前請電洽 愛之旅</p>
+<p>網站連結：<a href="https://www.go-penghu.com/" target="_blank">按此前往</a></p>
+`;
+}
+infoContainer.innerHTML = content;
+}

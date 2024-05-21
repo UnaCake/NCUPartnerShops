@@ -1,0 +1,399 @@
+-- html 頁面導航列
+
+<li class="nav-item">
+      <a class="nav-link collapsed" data-bs-target="#restaurant-nav" data-bs-toggle="collapse" href="#">
+        <i class="bi bi-egg-fried"></i><span>餐飲</span><i class="bi bi-chevron-down ms-auto"></i>
+      </a>
+      <ul id="restaurant-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+        <li>
+          <a id="restaurant1" href="#">
+            <i class="bi bi-bookmark"></i><span>藝奇日本料理</span>
+          </a>
+        </li>
+        <li>
+          <a id="restaurant2" href="#">
+            <i class="bi bi-bookmark"></i><span>享鴨</span>
+          </a>
+        </li>
+        <li>
+          <a id="restaurant3" href="#">
+            <i class="bi bi-bookmark"></i><span>涮乃葉</span>
+          </a>
+        </li>
+        <li>
+          <a id="restaurant4" href="#">
+            <i class="bi bi-bookmark"></i><span>橫浜牛排</span>
+          </a>
+        </li>
+        <li>
+            <a id="restaurant5" href="#">
+              <i class="bi bi-bookmark"></i><span>原燒</span>
+            </a>
+          </li>
+          <li>
+            <a id="restaurant6" href="#">
+              <i class="bi bi-bookmark"></i><span>柚子花花青春客家菜</span>
+            </a>
+          </li>
+          <li>
+            <a id="restaurant7" href="#">
+              <i class="bi bi-bookmark"></i><span>陶板屋</span>
+            </a>
+          </li>
+          <li>
+            <a id="restaurant8" href="#">
+              <i class="bi bi-bookmark"></i><span>王品牛排</span>
+            </a>
+          </li>
+          <li>
+            <a id="restaurant9" href="#">
+              <i class="bi bi-bookmark"></i><span>尬鍋</span>
+            </a>
+          </li>
+          <li>
+            <a id="restaurant10" href="#">
+              <i class="bi bi-bookmark"></i><span>Tasty 西堤牛排</span>
+            </a>
+          </li>
+          <li>
+            <a id="restaurant11" href="#">
+              <i class="bi bi-bookmark"></i><span>匡記涼麵</span>
+            </a>
+          </li>
+          <li>
+            <a id="restaurant12" href="#">
+              <i class="bi bi-bookmark"></i><span>友竹居</span>
+            </a>
+          </li>
+          <li>
+            <a id="restaurant13" href="#">
+              <i class="bi bi-bookmark"></i><span>天母盛鑫</span>
+            </a>
+          </li>
+          <li>
+            <a id="restaurant14" href="#">
+              <i class="bi bi-bookmark"></i><span>東東餐飲集團</span>
+            </a>
+          </li>
+          <li>
+            <a id="restaurant15" href="#">
+              <i class="bi bi-bookmark"></i><span>一番地(台北店、中壢店、桃園店)
+            </a>
+          </li>
+          <li>
+            <a id="restaurant16" href="#">
+              <i class="bi bi-bookmark"></i><span>海底撈</span>
+            </a>
+          </li>
+          <li>
+            <a id="restaurant17" href="#">
+              <i class="bi bi-bookmark"></i><span>七盞茶</span>
+            </a>
+          </li>
+          <li>
+            <a id="location18" href="#">
+              <i class="bi bi-bookmark"></i><span>鶴茶樓</span>
+            </a>
+          </li>
+      </ul>
+    </li>
+
+
+-- JS 互動
+
+var locations = [
+        {
+            id: 'restaurant1', 
+            title: '藝奇日本料理',
+            subLocations: [
+                { lat: 25.042323527756302, lng: 121.51208886975535, title: '台北衡陽店' },
+                { lat: 24.990718567741236, lng: 121.30854299538406, title: '桃園南華店' },
+                { lat: 24.831163101857594, lng: 121.01309144140664, title: '竹北光明店' },
+                { lat: 22.995828382872258, lng: 120.23367995601168, title: '台南南紡店' }
+            ]
+        },
+        {
+            id: 'restaurant2', 
+            title: '享鴨',
+            subLocations: [
+                { lat: 25.08337123472803, lng: 121.29319317322877, title: '桃園同德店' },
+                { lat: 25.034071706973933, lng: 121.52701191208229, title: '台北金山南店' },
+                { lat: 25.041549986480675, lng: 121.54792562237186, title: '台北忠孝東店' }
+            ]
+        },
+        { id: 'restaurant3', 
+	  title: '涮乃葉' },
+	subLocations: [
+                { lat: 25.037115574562485, lng: 121.56812486654995, title: '信義遠百店' },
+                { lat: 23.079810705074472, lng: 120.24166082360118, title: '台南遠百成功店' }
+            ]
+	},
+
+
+        { id: 'restaurant4',
+	 title: '橫浜牛排' },
+	subLocations: [
+                { lat: 25.16393472721237, lng: 121.54790480436563, title: '微風南京店' }    
+            ]
+	},
+
+    	{
+            id: 'restaurant5', 
+            title: '原燒',
+            subLocations: [
+                { lat: 24.96184325386761, lng: 121.22662872740773, title: '中壢元化店' }
+            ]
+        },
+	{
+            id: 'restaurant6', 
+            title: '柚子花花青春客家菜',
+            subLocations: [
+                { lat: 25.023061392372526, lng: 121.2960357287901, title: '桃園店' },
+                { lat: 25.005499299074692, lng: 121.20263635838165, title: 'A19環球青埔店' },
+                { lat: 24.83061323240136, lng: 121.03172300641192, title: '竹北享平方店' },
+		{ lat: 25.05835694398406, lng: 121.5202360901603, title: '台北店' }
+            ]
+        },
+	{
+            id: 'restaurant7', 
+            title: '陶板屋',
+            subLocations: [
+                { lat: 24.964341288060027, lng: 121.22192276249923, title: '中壢中山店' },
+                { lat: 24.96997841604051, lng: 121.29906187900747, title: '八德大和店' }
+           
+            ]
+        },
+	{
+            id: 'restaurant8', 
+            title: '王品牛排',
+            subLocations: [
+                { lat: 25.025806252110055, lng: 121.30318071091851, title: '桃園同德店' },
+                { lat: 25.071107801265327, lng: 121.5221557425648, title: '台北中山北店' },
+                { lat: 24.83063092889069, lng: 121.01419090702255, title: '新竹光明店' },
+		{ lat: 22.981603258109068, lng: 120.21101259627386, title: '台南健康店' }
+		
+            ]
+        },
+	{
+            id: 'restaurant9', 
+            title: '尬鍋',
+            subLocations: [
+                { lat: 25.041223010234816, lng: 121.1958237148014, title: '中壢店' }
+            ]
+        },
+	{
+            id: 'restaurant10', 
+            title: 'Tasty 西堤牛排',
+            subLocations: [
+                { lat: 25.007824230115236, lng: 121.30500704150174, title: '桃園南華店' }
+            ]
+        },
+	{ id: 'restaurant11',coords: { lat: 25.03819989312054, lng:121.50771842237174 },title: '匡記涼麵'},
+
+	{ id: 'restaurant12', coords: { lat: 24.968614317024272, lng: 121.20142044090241},title: '有竹居'},
+            
+	{ 
+id: 'restaurant13', 
+            title: '天母盛鑫',
+            subLocations: [
+                { lat: 25.098463546852532, lng: 121.121.52697272422319, title: '中山店' },
+                { lat: 25.085014667257646, lng: 121.55777492604872, title: '麗華店' }
+            ]
+        },
+	{ id: 'restaurant14', coords: { lat: 22.988750506906246, lng: 120.17469853088215},title: '東東餐飲集團'},
+
+	{
+            id: 'restaurant15', 
+            title: '一番地(台北店、中壢店、桃園店)',
+            subLocations: [
+                { lat: 25.031135091143582, lng: 121.51874119402282, title: '台北店' },
+                { lat: 24.960306040136654, lng: 121.22095249538309, title: '中壢店' },
+                { lat: 25.01765790460142, lng: 121.29750883009197, title: '桃園店' }
+            ]
+        },
+    {
+            id: 'restaurant16', coords: { lat: 24.99129801299116, lng: 121.31253219538411},title: '海底撈'},
+    {
+            id: 'restaurant17', coords: { lat: 24.965264843201506, lng: 121.2168652161046},title: '七盞茶'},
+    {
+            id: 'restaurant18', coords: { lat: 24.965264843201506, lng: 121.2168652161046},title: '鶴茶樓'}
+
+
+
+function updateInfoContainer(locationId) {
+    const infoContainer = document.getElementById('info-container');
+    let content = '';
+
+    if (locationId === 'restaurant1') {
+        content = `
+        <h1>藝奇日本料理</h1>
+        <p>* 台北衡陽店：台北市中正區衡陽路52號。(近博愛路)。02-23310200</p>
+        <p>* 桃園南華：桃園市桃園區南華街60號(南華街‧中華路口)。03-3398680</p>
+        <p>* 竹北光明：新竹縣竹北市光明一路368號(近文祿街口)。035-589622</p>
+        <p>* 台南南紡店：台南市東區中華東路一段358號 3樓(南紡購物中心A2館)。</p>
+        <p>優惠內容：憑校友證消費套餐，即可享有主廚私房菜一份(優惠內容視各分店提供內容為主)。</p>
+        <p>優惠期限：依各分店為準，使用優惠前請電洽藝奇日本料理確認。</p>
+        <p>網站連結：<a href="https://www.ikki.com.tw/store_view.php?store=7" target="_blank">按此前往</a></p>
+      `;
+    } else if (locationId === 'restaurant2') {
+        content = `
+        <h1>享鴨</h1>
+        <p>* 桃園同德店：桃園市桃園區同德五街73號10樓(中茂新天地)。03-3568805</p>
+        <p>* 台北金山南店：台北市大安區金山南路二段2號2樓。02-23223789</p>
+        <p>* 台北忠孝東店：台北市大安區忠孝東路四段128號2樓。02-27118823</p>
+        <p>優惠內容：憑校友證至店內消費，即招待芝麻流沙湯圓一份。</p>
+        <p>優惠期限：依各分店為準，使用優惠前請電洽享鴨確認。</p>
+        <p>網站連結：<a href="https://www.xiangduck.com.tw/" target="_blank">按此前往</a></p>
+      `;
+    } else if (locationId === 'restaurant3') {
+        content = `
+        <h1>涮乃葉</h1>
+        <p>*信義遠百店：台北市信義區松仁路58號7樓。02-27230698</p>
+        <p>*台南遠百成功店：台南市東區前鋒路210號4樓。06-2091292</p>
+        <p>優惠內容：憑校友證，店內用餐享 9.5折優惠。</p>
+        <p>優惠期限 : 依各分店為準，使用優惠前請電洽涮乃葉(信義遠百店、台南遠百成功店)確認。</p>
+        <p>網站連結：<a href="https://syabuyo.com.tw/" target="_blank">按此前往</a></p>
+      `;
+    } else if (locationId === 'restaurant4') {
+        content = `
+        <h1>橫浜牛排</h1>
+        <p>* 微風南京店：台北市南京東路三段337號3樓。02-87125575</p>
+        <p>優惠內容：憑校友證用餐，全時段95折。</p>
+        <p>優惠期限：依各分店為準，使用優惠前請電洽橫浜牛排(微風南京店)確認。</p>
+        <p>網站連結：<a href="https://inline.app/booking/-LmryXQ4hVtyifXQLKkD%3Ainline-live-1/-LmryXU-OKIeX6tvoKJL?language=zh-tw" target="_blank">按此前往</a></p>
+      `;
+    } else if (locationId === 'restaurant5') {
+        content = `
+        <h1>原燒</h1>
+        <p>* 中壢元化店：桃園市中壢區元化路245號2樓。03-4526458</p>
+        <p>優惠內容：憑校友證至原燒中壢元化店內消費套餐，贈送「去骨雞腿」乙份。</p>
+        <p>優惠期限：依各分店為準，使用優惠前請電洽原燒（中壢元化店）確認。</p>
+        <p>網站連結：<a href="https://www.yakiyan.com/" target="_blank">按此前往</a></p>
+      `;
+    } else if (locationId === 'restaurant6') {
+        content = `
+        <h1>柚子花花青春客家菜</h1>
+        <p>* 桃園店：桃園市桃園區中正路1270號。03-317-2666</p>
+        <p>* A19環球青埔店：桃園市中壢區高鐵南路二段352號5F。03-2871931</p>
+        <p>* 竹北享平方店：新竹縣竹北市自強南路36號2樓。03-6685591</p>
+        <p>* 台北店：台北市中山區中山北路二段48巷7號B1。02-25218601</p>
+        <p>優惠內容：憑校友證至店內消費享菜色九折優惠。凡預約商務合菜消費即享菜色九折優惠。</p>
+        <p>優惠期限：依各分店為準，使用優惠前請電洽柚子花花青春客家菜(桃園店、A19環球青埔店、竹北享平方店、台北店)確認。</p>
+        <p>網站連結：<a href="https://www.facebook.com/HakkaHappyFlower/?locale=zh_TW" target="_blank">按此前往</a></p>
+      `;
+    } else if (locationId === 'restaurant7') {
+        content = `
+        <h1>陶板屋</h1>
+        <p>* 中壢中山店：桃園市中壢區中山路111號2樓。03-2807070</p>
+        <p>* 八德大和店：桃園市八德區金和路27號2樓。03-2182928</p>
+        <p>優惠內容：持校友證、員工證至餐廳消費，即贈送主廚私房菜一份。</p>
+        <p>優惠期限：依各分店為準，使用優惠前請電洽陶板屋(中壢中山店、八德大和店)確認。</p>
+        <p>網站連結：<a href="https://www.tokiya.com.tw/" target="_blank">按此前往</a></p>
+      `;
+    } else if (locationId === 'restaurant8') {
+        content = `
+        <h1>王品牛排</h1>
+        <p>* 桃園同德店：桃園市桃園區同德五街69號3F。03-3561887</p>
+        <p>* 台北中山北店：台北市中山區中山北路二段33號2F。02-25361350</p>
+        <p>* 新竹光明店：新竹縣竹北市光明一路181號。03-5588669</p>
+        <p>* 台南健康店：台南市中西區健康路一段24號。06-2137966</p>
+        <p>優惠內容：憑校友證至店內消費套餐，贈送「主廚私房菜」乙份。</p>
+        <p>優惠期限：依各分店為準，使用優惠前請電洽王品牛排(桃園同德店、台北中山北店、新竹光明店、台南健康店)確認。</p>
+        <p>網站連結：<a href="https://www.wangsteak.com.tw/" target="_blank">按此前往</a></p>
+      `;
+    } else if (locationId === 'restaurant9') {
+        content = `
+        <h1>尬鍋</h1>
+        <p>* 中壢店：桃園市中壢區元化路327號1樓。03-4220036</p>
+        <p>優惠內容：憑校友證至店內消費享好禮五選一（雪花牛肉、梅花豬肉、真香無骨鹽酥雞、鮮切雕魚、蛤蜊）。</p>
+        <p>優惠期限：依各分店為準，使用優惠前請電洽尬鍋(中壢店)確認。</p>
+        <p>網站連結：<a href="https://www.godguo.com.tw/" target="_blank">按此前往</a></p>
+      `;
+    } else if (locationId === 'restaurant10') {
+        content = `
+        <h1>Tasty 西堤牛排</h1>
+        <p>* 桃園南華店：桃園市桃園區南華街66號。03-3395896</p>
+        <p>優惠內容：憑校友證消費套餐，每桌每人贈送「無酒精香檳氣泡飲」乙份。</p>
+        <p>優惠期限：依各分店為準，使用優惠前請電洽Tasty 西堤牛排-桃園南華店確認。</p>
+        <p>網站連結：<a href="https://www.tasty.com.tw/" target="_blank">按此前往</a></p>
+      `;
+    } else if (locationId === 'restaurant11') {
+        content = `
+        <h1>匡記涼麵</h1>
+        <p>地址：台北市信義區吳興街8巷3號。02-27324719</p>
+        <p>優惠內容：憑校友證消費9折優惠。</p>
+        <p>優惠期限：無限制，使用優惠前請電洽匡記涼麵確認。</p>
+        <p>網站連結：<a href="https://www.facebook.com/kuangjinoodle/?locale=zh_TW" target="_blank">按此前往</a></p>
+      `;
+    } else if (locationId === 'restaurant12') {
+        content = `
+        <h1>友竹居</h1>
+        <p>地址：桃園縣中壢市中大路32號。03-4271116</p>
+        <p>優惠內容：憑教職員證用餐以現金消費一律9折。</p>
+        <p>優惠期限：無限制 ，使用優惠前請電洽友竹居確認。</p>
+        <p>網站連結：<a href="https://www.facebook.com/people/%E5%8F%8B%E7%AB%B9%E5%B1%85%E8%8C%B6%E8%97%9D%E9%A4%A8/100064085109802/" target="_blank">按此前往</a></p>
+      `;
+    } else if (locationId === 'restaurant13') {
+        content = `
+        <h1>天母盛鑫</h1>
+        <p>* 中山店：台北市士林區中山北路五段729號。02-28363588</p>
+        <p>* 麗華店：台北市敬業三路22號5樓。02-21753816</p>
+        <p>優惠內容：憑校友證消費免加一成服務費。</p>
+        <p>優惠期限：無期限，使用優惠前請電洽天母盛鑫(中山店、麗華店)確認。</p>
+        <p>網站連結：<a href="https://www.gilleys.com.tw/" target="_blank">前往連結</a></p>
+      `;
+    } else if (locationId === 'restaurant14') {
+        content = `
+        <h1>東東餐飲集團</h1>
+        <p>地址：台南市安平區華平路152號。06-2951000</p>
+        <p>優惠內容：憑校友證至旗下分店消費享消費金額九折優惠。</p>
+        <p>優惠期限：依各分店為準，使用優惠前請電洽東東餐飲集團確認。</p>
+        <p>網站連結：<a href="http://www.dondom.com.tw/career.php" target="_blank">前往連結</a></p>
+      `;
+    } else if (locationId === 'restaurant15') {
+        content = `
+        <h1>一番地</h1>
+        <p>* 台北店：台北市中正區和平西路一段80號。02-2368-6600</p>
+        <p>* 中壢店：桃園市中壢區中美路二段130號。03-4252588</p>
+        <p>* 桃園店：桃園市桃園區大興西路二段86號。03-3019500</p>
+        <p>優惠內容：憑校友證消費95折優惠。</p>
+        <p>優惠期限：無限期，使用優惠前請電洽一番地(台北店、中壢店、桃園店)確認。</p>
+        <p>網站連結：<a href="https://www.sukiyakino1.com.tw/home.html" target="_blank">前往連結</a></p>
+      `;
+    } else if (locationId === 'restaurant16') {
+        content = `
+        <h1>海底撈</h1>
+        <p>*桃園統領店：桃園市桃園區中正路61號8樓。03-3321608</p>
+        <p>優惠內容: 結帳時出示學生證</p>
+        <p>（1） 平日（即非假日、星期六及星期日），結帳享全店菜品88折優惠價；</p>
+        <p>假日，結帳享全店菜品95折優惠價 (以上均不含鍋底/酒水/醬料等)。</p>
+        <p>（2） 不定期推出獨家限定款商品組合優惠價/優惠卷等，所有優惠不得同時使用 。</p>
+        <p>優惠期限: 使用優惠前請電洽 海底撈(桃園統領店)確認</p>
+        <p>網站連結：<a href="https://inline.app/booking/-LamXb5SAQN7JcJfyRKi:inline-live-2a466/-LcTecEoGkZm2Acfd96G?language=zh-tw" target="_blank">前往連結</a></p>
+      `;
+    } else if (locationId === 'restaurant17') {
+        content = `
+        <h1>七盞茶</h1>
+        
+        <p>*中壢光明店：桃園市中壢區三光路409號。03-2812355</p>
+        <p>優惠內容:憑學生證可享以下優惠</p>
+        <p>1.來店消費享95折優惠</p>
+        <p>2.外送滿300，享9折優惠</p>
+        <p>優惠期限: 使用優惠前請電洽 七盞茶(中壢光明店)確認</p>
+        <p>網站連結：<a href="https://www.taiwan7tea.com.tw/" target="_blank">前往連結</a></p>
+      `;
+    } else if (locationId === 'restaurant18') {
+        content = `
+        <h1>鶴茶樓</h1>
+        <p>*中壢中山店：桃園市中壢區大同路130號1樓。03-4228900</p>
+        <p>優惠內容:憑學生證可享以下優惠</p>
+        <p>1.來店或電話自取享9折優惠(可與環保杯、買五送一併用)</p>
+        <p>2.外送滿500元享9折，300元享95折</p>
+        <p>優惠期限: 使用優惠前請電洽 鶴茶樓(中壢中山店)確認</p>
+        <p>網站連結：<a href="https://hechaloutea.com.tw/" target="_blank">前往連結</a></p>
+      `;
+    }
+
+    infoContainer.innerHTML = content;
+}
+

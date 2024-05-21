@@ -1,0 +1,140 @@
+-- html 頁面導航列
+
+<li class="nav-item">
+      <a class="nav-link collapsed" data-bs-target="#products-nav" data-bs-toggle="collapse" href="#">
+        <i class="bi bi-egg-fried"></i><span>餐廳</span><i class="bi bi-chevron-down ms-auto"></i>
+      </a>
+      <ul id="products-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+        <li>
+          <a id="location1" href="#">
+            <i class="bi bi-bookmark"></i><span>Homebox好博家</span>
+          </a>
+        </li>
+        <li>
+          <a id="location2" href="#">
+            <i class="bi bi-bookmark"></i><span>萬國通路股份有限公司</span>
+          </a>
+        </li>
+        <li>
+          <a id="location3" href="#">
+            <i class="bi bi-bookmark"></i><span>愛菲斯居家美學</span>
+          </a>
+        </li>
+        <li>
+          <a id="location4" href="#">
+            <i class="bi bi-bookmark"></i><span>朵法亞生活美學</span>
+          </a>
+        </li>
+        <li>
+            <a id="location3" href="#">
+              <i class="bi bi-bookmark"></i><span>台灣歐德家具股份有限公司</span>
+            </a>
+        </li>
+        <li>
+            <a id="location3" href="#">
+              <i class="bi bi-bookmark"></i><span>新視代影音科技</span>
+            </a>
+        </li>
+      </ul>
+    </li>
+
+
+-- JS 互動
+
+var locations = [
+        
+{
+    id: 'location1',coords: { lat: 24.825877640590218, lng: 121.01570823159864 },title: 'homebox好博家'},
+{
+    id: 'location2',title: '萬國通路股份有限公司'},
+{
+    id: 'location3',coords: { lat: 25.061831221171147, lng: 121.52547113379316 },title: '愛菲斯居家美學'},
+{
+    id: 'location4',coords: { lat: 25.00791464680665, lng: 121.48383054911483 },title: '朵法亞生活美學'},
+{
+    id: 'location5',coords: { lat: 24.963459559429634, lng: 121.23257706444043 },title: '台灣歐德家具股份有限公司'},
+{
+    id: 'location6',coords: { lat: 25.02065581063814, lng: 121.21518044912008 },title: '新視代影音科技'},
+
+
+
+    function updateInfoContainer(locationId) {
+    const infoContainer = document.getElementById('info-container');
+    let content = '';
+
+    if (locationId === 'location1') {
+        content = `
+        <h1>Homebox好博家</h1>
+        <p>*新竹縣竹北市縣政二路186號。0800-285-885</p>
+        <p>優惠內容：1.全國實體門市購物享95折優惠
+            5/23(四)~5/27(一)特約9折◆SUMMER樂一夏！特約企業9折優惠活動即將開跑！
+            注意事項：
+            A. 不適用冷氣、家電、施工費、廚具櫥櫃、系統家具、特訂窗簾布、磁磚、鐡件商品、TOTO合購套組、衛生紙巾類、出清品等。
+            B. 不適用以員工卡、VIP濾芯卡、9折炫涼卡及交易折價券、現折券、其他優惠卡(券)等結帳。
+            C. 恕無法享有會員紅利點數。
+            D. 不得與其他優惠併用(例：滿千送百、滿萬送千、合購價、現折優惠、買X送Y、安裝優惠、同類商品買第X件享Y折、加購價、免頭期款優惠、滿額贈優惠等)。
+        </p>
+        <p>優惠期限：即日起-2024.12.31 ，使用優惠前請電洽Homebox好博家確認。</p>
+        <p>網站連結：<a href="https://www.homeboxshop.com.tw/" target="_blank">按此前往</a></p>
+      `;
+    } else if (locationId === 'location2') {
+        content = `
+        <h1>萬國通路股份有限公司</h1>
+        <p>優惠內容：憑校友證
+            1.商品9折優惠價
+            2.不定期提出獨家限定款商品組合優惠價
+        </p>
+        <p>優惠期限： 2022.01.01-2024.12.31 ，使用優惠前請電洽 萬國通路股份有限公司確認。</p>
+        <p>網站連結：<a href="https://tw.eminent.com/" target="_blank">按此前往</a></p>
+      `;
+    } else if (locationId === 'location3') {
+        content = `
+        <h1>愛菲斯居家美學</h1>
+        <p>*新北市中和區板南路663號14樓。02-2778-0037。</p>
+        <p>優惠內容：可憑校友證，即享有相關特價優惠。
+            優惠對象：教職員工、校友、學生
+            於朵法亞生活美學官網：
+            https://www.darphia.com/
+            使用優惠代碼：SVIP2401
+            ※全館85折，不與館內其他優惠共用。
+            合約期間：自中華民國 113 年 02 月 01 日起至 114 年 02 月 01 日止。
+            若雙方無不續約之意思表示，為節省行政作業，可於合約到期日之前，經雙方email聯繫同意續約後，即按本合約書之原條件，自動續約一期；如優惠內容有變更，可以附件形式提供。
+        </p>
+        <p>優惠期限 : 2023.02.01-2024.02.01 ，使用優惠前請電洽 朵法亞生活美學確認。</p>
+        <p>網站連結：<a href="https://www.elvishome.com/" target="_blank">按此前往</a></p>
+      `;
+    } else if (locationId === 'location4') {
+        content = `
+        <h1>朵法亞生活美學</h1>
+        <p>* 新北市中和區板南路663號14樓。02-2778-0037。</p>
+        <p>優惠內容：可憑校友證，即享有相關特價優惠。
+            優惠對象：教職員工、校友、學生
+            於朵法亞生活美學官網：
+            https://www.darphia.com/
+            使用優惠代碼：SVIP2401
+            ※全館85折，不與館內其他優惠共用。
+            合約期間：自中華民國 113 年 02 月 01 日起至 114 年 02 月 01 日止。
+            若雙方無不續約之意思表示，為節省行政作業，可於合約到期日之前，經雙方email聯繫同意續約後，即按本合約書之原條件，自動續約一期；如優惠內容有變更，可以附件形式提供。
+        </p>
+        <p>優惠期限： 2023.02.01-2024.02.01 ，使用優惠前請電洽 朵法亞生活美學確認</p>
+        <p>網站連結：<a href="http://www.darphia.com/" target="_blank">按此前往</a></p>
+      `;
+    } else if (locationId === 'location5') {
+        content = `
+        <h1>台灣歐德家具股份有限公司</h1>
+        <p>*桃園縣中壢市延平路47號。03-4535778。</p>
+        <p>優惠內容：1.原有折扣，再享95折。2.來店即贈來店禮。3.不定期促銷活動。4.免費3D圖面設計規劃</p>
+        <p>優惠期限：2013.10.04-無期限 ，使用優惠前請電洽 台灣歐德家具股份有限公司確認。</p>
+        <p>網站連結：<a href="https://www.order.com.tw/" target="_blank">按此前往</a></p>
+      `;
+    } else if (locationId === 'location6') {
+        content = `
+        <h1>新視代影音科技</h1>
+        <p>*桃園市大園區領航北路四段12號。03-3811373。</p>
+        <p>優惠內容：憑校友證消費 1.享全館市售價九折及每月特惠商品低價回饋。2. Lgy全系列商品十二期零利率</p>
+        <p>優惠期限： 2014.01.01-無期限 ，使用優惠前請電洽 新視代影音科技確認。</p>
+        <p>網站連結：<a href="http://www.neo-force.com.tw/" target="_blank">按此前往</a></p>
+      `;
+   
+    infoContainer.innerHTML = content;
+}
