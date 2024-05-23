@@ -1,0 +1,88 @@
+<li class="nav-item">
+      <a class="nav-link collapsed" data-bs-target="#leisure-nav" data-bs-toggle="collapse" href="#">
+        <i class="bi bi-sunglasses"></i>
+        <span>休閒</span><i class="bi bi-chevron-down ms-auto"></i>
+      </a>
+      <ul id="leisure-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+        <li>
+          <a id="leisure1" href="#">
+            <i class="bi bi-bookmark"></i><span>六福村主題遊樂園</span>
+          </a>
+        </li>
+        <li>
+          <a id="leisure2" href="#">
+            <i class="bi bi-bookmark"></i><span>劍湖山世界</span>
+          </a>
+        </li>
+        <li>
+          <a id="leisure3" href="#">
+            <i class="bi bi-bookmark"></i><span>享玩桌遊</span>
+          </a>
+        </li>
+        <li>
+          <a id="leisure4" href="#">
+            <i class="bi bi-bookmark"></i><span>綠世界生態農場</span>
+          </a>
+        </li>
+      </ul>
+    </li>
+
+------------------------------
+{ id: 'leisure1',coords: { lat: 24.824838097737075,lng: 121.18347853369474 },title: '六福村主題遊樂園'},
+        { id: 'leisure2',coords: { lat: 23.61623623345457, lng: 120.57611703871348 },title: '劍湖山世界'},
+        { id: 'leisure3',coords: { lat: 24.983296799801774,lng: 121.2727262402594 },title: '享玩桌遊'},
+        { id: 'leisure4',coords: { lat: 24.698770260703842,lng: 121.07109594898702 },title: '綠世界生態農場'}
+------------------------------
+
+else if (locationId === 'leisure1') {
+        content = `
+        <h1>六福村主題遊樂園</h1>
+        <p>"*新竹縣關西鎮仁安里拱子溝60號。03-5475665</p>
+        <p>*優惠內容:</p>
+        <p>憑校友證可享:</p>
+        <p>六福村3月起至12月，每月12號前憑證件可享$550購票優惠，購票時再請出示""優惠內容下載""的檔案提醒售票人員</p>
+        <p>*優惠期限 : 2023/03/31~2023/12/31 ，使用優惠前請電洽 六福村主題遊樂園確認</p>
+        <p>網站連結：<a href="https://in.ncu.edu.tw/alumni/web/doc/20230308153101_att.pdf" target="_blank">按此前往</a></p>
+      `;
+    }  else if (locationId === 'leisure2') {
+        content = `
+        <h1>劍湖山世界</h1>
+        <p>*雲林古坑鄉永光村大湖口67號。05-5825789</p>
+        <p>*優惠內容:憑校友證享以下優惠:</p>
+        <p>1.至劍湖山主題樂園購票享650元(原價899元)優惠價</p>
+        <p>2.每證當日限購四張，不得與其他優惠活動並用</p>
+        <p>3.不適用於農曆春節假期(農曆初一至初五)</p>
+        <p>4.優惠期間內如有調整門票價格，以現場公告為主，恕不另行通知</p>
+        <p>*優惠期限 : 2019.01.01-2023.12.30，使用優惠前請電洽 劍湖山世界確認</p>
+        <p>網站連結：<a href="https://janfusun.com.tw/fancyworld.php" target="_blank">按此前往</a></p>
+      `;
+    } else if (locationId === 'leisure3') {
+        content = `
+        <h1>享玩桌遊</h1> 
+        <p>*桃園市桃園區大慶街356號裕和街17巷88。03-370-0260</p>
+        <p>*優惠內容:</p>
+        <p>憑校友證至店內消費，可享優惠:</p>
+        <p>1.生日當天壽星遊玩免費。(以身分證資料為準)</p>
+        <p>2.社團(各系學會、班級)4人以上訂位，(平日)包日100元/人、(假日)包日150元/人。</p>
+        <p>※各項優惠不可合併使用。且須主動出示有效證件。</p>
+        <p>※活動優惠範圍為店內桌遊遊玩、販售，不包含桌遊外租、集換式卡牌及其周邊商品。</p>
+        <p>*優惠期限 : 2020.08.01-2024.12.31 ，使用優惠前請電洽 享玩桌遊確認"</p>
+        <p>網站連結：<a href="https://www.have-fun.com.tw/" target="_blank">按此前往</a></p>
+      `;
+    } else if (locationId === 'leisure4') {
+        content = `
+        <h1>綠世界生態農場</h1>
+        <p>*新竹縣北埔鄉大湖村7鄰20號。03-5801000。<br> 
+        *優惠內容:<br>
+        憑校友證可享:<br>
+        1. 本人及其親友，限購五張優待半票。(最新半票之價格請參考綠世界官網)<br>
+        2. 至園區各商店消費，部分商品享9折優惠<br>
+        3. 特約廠商員工本人於生日當天入園，憑識別證和身分證件(身分證、駕照，需有照片能辨識為本人之證件)，可享免費入園優惠及贈送精美小禮物。<br>
+        (此優惠僅限特廠員工本人適用，且僅限生日當天入園，方享有此優惠。)<br>
+        *優惠期限 : 即日起~2024.12.31 ，使用優惠前請電洽 綠世界生態農場確認"</p>
+        <p>網站連結：<a href="https://www.green-world.com.tw/" target="_blank">按此前往</a></p>
+      `;
+    }
+
+-----------------------------------------
+
