@@ -5,6 +5,19 @@ function initMap() {
     });
 
     var locations = [
+        { id: 'Cdiscount1',coords: { lat: 24.974205760220315,lng: 121.19337989402285 },title: '小木屋鬆餅｜中大店'},
+        { id: 'Cdiscount2',coords: { lat: 24.96716507626938, lng: 121.1908416107259 },title: '路易莎咖啡｜中央大學門市'},
+        { id: 'Cdiscount3',coords: { lat: 24.966284937071343, lng: 121.19464267725955 },title: '敦煌書局｜中央營業所'},
+        { id: 'Cdiscount4',coords: { lat: 24.96837947902286, lng: 121.19529879538335 },title: '中大駐警隊｜校內停車優惠'},
+        {  
+            id: 'Cdiscount5',
+            title: '全家便利商店',
+            subLocations: [
+            { lat: 24.965827210517087, lng: 121.19551462721861, title: '中壢中央一店' },
+            { lat: 24.971017805385756, lng: 121.19584328200153, title: '中壢中央二店' },
+            { lat: 24.967458067248756, lng: 121.19090801760765, title: '中壢中央三店' }]},
+        
+        { id: 'Cdiscount6',coords: { lat: 24.970045209561047,lng: 121.18985659180765 },title: '桃園市中大國民運動中心'},
         {
             id: 'restaurant1', 
             title: '藝奇日本料理',
@@ -87,7 +100,7 @@ function initMap() {
         },
         { id: 'restaurant16', coords: { lat: 24.99129801299116, lng: 121.31253219538411},title: '海底撈'},
         { id: 'restaurant17', coords: { lat: 24.965264843201506, lng: 121.2168652161046},title: '七盞茶'},
-        { id: 'restaurant18', coords: { lat: 24.965264843201506, lng: 121.2168652161046},title: '鶴茶樓'},
+        { id: 'restaurant18', coords: { lat: 24.95785109575251, lng: 121.22198941006117},title: '鶴茶樓'},
         { id: 'traffic1',coords: { lat: 25.057540056405674, lng: 121.53756816706775 },title: '中國東方航空'},
         { id: 'traffic2',coords: { lat: 24.968238626139875, lng: 121.19432434232908},title: '飛遊網 台灣航空'},
         { id: 'traffic3',coords: { lat: 25.05817927290209, lng: 121.54778479666119},title: '國泰航空'},
@@ -99,18 +112,26 @@ function initMap() {
         { id: 'products4',coords: { lat: 25.00791464680665, lng: 121.48383054911483 },title: '朵法亞生活美學'},
         { id: 'products5',coords: { lat: 24.963459559429634, lng: 121.23257706444043 },title: '台灣歐德家具股份有限公司'},
         { id: 'products6',coords: { lat: 25.02065581063814, lng: 121.21518044912008 },title: '新視代影音科技'},
+        { id: 'leisure1',coords: { lat: 24.824838097737075,lng: 121.18347853369474 },title: '六福村主題遊樂園'},
+        { id: 'leisure2',coords: { lat: 23.61623623345457, lng: 120.57611703871348 },title: '劍湖山世界'},
+        { id: 'leisure3',coords: { lat: 24.983296799801774,lng: 121.2727262402594 },title: '享玩桌遊'},
+        { id: 'leisure4',coords: { lat: 24.698770260703842,lng: 121.07109594898702 },title: '綠世界生態農場'}
     ];
 
-    var markers = [];
-    var infoWindows = [];
+    var markers = {};
+    var infoWindows = {};
+    var openInfoWindows = [];
 
     locations.forEach(function (location) {
         if (location.subLocations) {
+            markers[location.id] = [];
+            infoWindows[location.id] = [];
             location.subLocations.forEach(function (subLocation) {
                 var marker = new google.maps.Marker({
                     position: subLocation,
                     map: map,
-                    title: location.title + ' ' + subLocation.title
+                    title: location.title + ' ' + subLocation.title,
+                    visible: false
                 });
 
                 var infoWindow = new google.maps.InfoWindow({
@@ -120,16 +141,18 @@ function initMap() {
                 marker.addListener('click', function () {
                     closeAllInfoWindows();
                     infoWindow.open(map, marker);
+                    openInfoWindows.push(infoWindow);
                 });
 
-                markers.push(marker);
-                infoWindows.push(infoWindow);
+                markers[location.id].push(marker);
+                infoWindows[location.id].push(infoWindow);
             });
         } else {
             var marker = new google.maps.Marker({
                 position: location.coords,
                 map: map,
-                title: location.title
+                title: location.title,
+                visible: false
             });
 
             var infoWindow = new google.maps.InfoWindow({
@@ -139,35 +162,45 @@ function initMap() {
             marker.addListener('click', function () {
                 closeAllInfoWindows();
                 infoWindow.open(map, marker);
+                openInfoWindows.push(infoWindow);
             });
 
-            markers.push(marker);
-            infoWindows.push(infoWindow);
+            markers[location.id] = [marker];
+            infoWindows[location.id] = [infoWindow];
         }
 
         // Listen for clicks on the menu items
         document.getElementById(location.id).addEventListener('click', function () {
-            closeAllInfoWindows();
-            if (location.subLocations) {
-                var bounds = new google.maps.LatLngBounds();
-                location.subLocations.forEach(function (subLocation, index) {
-                    bounds.extend(subLocation);
-                    infoWindows[index].open(map, markers[index]);
-                });
-                map.fitBounds(bounds);
-
-                updateInfoContainer(location.id); // 传递location.id到updateInfoContainer
-            } else {
-                smoothPanAndZoom(map, marker.getPosition(), 15); // 放大到缩放级别 15
-                updateInfoContainer(location.id); // 传递location.id到updateInfoContainer
-            }
+            showMarkers(location.id);
+            updateInfoContainer(location.id);
         });
     });
 
-    function closeAllInfoWindows() {
-        infoWindows.forEach(function (iw) {
-            iw.close();
+    function showMarkers(locationId) {
+        closeAllInfoWindows();
+
+        // 隱藏所有標記
+        for (var key in markers) {
+            markers[key].forEach(function (marker) {
+                marker.setVisible(false);
+            });
+        }
+
+        // 顯示選中地標的標記並打開對應的信息窗口
+        var bounds = new google.maps.LatLngBounds();
+        markers[locationId].forEach(function (marker, index) {
+            marker.setVisible(true);
+            infoWindows[locationId][index].open(map, marker);
+            openInfoWindows.push(infoWindows[locationId][index]);
+            bounds.extend(marker.getPosition());
         });
+        map.fitBounds(bounds);
+    }
+
+    function closeAllInfoWindows() {
+        while (openInfoWindows.length) {
+            openInfoWindows.pop().close();
+        }
     }
 }
 
@@ -180,7 +213,6 @@ function smoothPanAndZoom(map, destination, zoomLevel) {
     let deltaLng = (endLatLng.lng() - startLatLng.lng()) / duration;
     let startZoom = map.getZoom();
     let deltaZoom = (zoomLevel - startZoom) / duration;
-
     let interval = setInterval(function () {
         let now = Date.now() - start;
         if (now >= duration) {
@@ -193,7 +225,7 @@ function smoothPanAndZoom(map, destination, zoomLevel) {
                 lng: startLatLng.lng() + deltaLng * now
             });
             map.setZoom(Math.round(startZoom + deltaZoom * now));
-        }
+        } ``
     }, 10); // Adjust the time interval for smooth animation
 }
 
@@ -505,6 +537,121 @@ function updateInfoContainer(locationId) {
         <p>網站連結：<a href="http://www.neo-force.com.tw/" target="_blank">按此前往</a></p>
       `;
     }
+    else if (locationId === 'leisure1') {
+        content = `
+        <h1>六福村主題遊樂園</h1>
+        <p>"*新竹縣關西鎮仁安里拱子溝60號。03-5475665</p>
+        <p>*優惠內容:</p>
+        <p>憑校友證可享:</p>
+        <p>六福村3月起至12月，每月12號前憑證件可享$550購票優惠，購票時再請出示""優惠內容下載""的檔案提醒售票人員</p>
+        <p>*優惠期限 : 2023/03/31~2023/12/31 ，使用優惠前請電洽 六福村主題遊樂園確認</p>
+        <p>網站連結：<a href="https://in.ncu.edu.tw/alumni/web/doc/20230308153101_att.pdf" target="_blank">按此前往</a></p>
+      `;
+    }  else if (locationId === 'leisure2') {
+        content = `
+        <h1>劍湖山世界</h1>
+        <p>*雲林古坑鄉永光村大湖口67號。05-5825789</p>
+        <p>*優惠內容:憑校友證享以下優惠:</p>
+        <p>1.至劍湖山主題樂園購票享650元(原價899元)優惠價</p>
+        <p>2.每證當日限購四張，不得與其他優惠活動並用</p>
+        <p>3.不適用於農曆春節假期(農曆初一至初五)</p>
+        <p>4.優惠期間內如有調整門票價格，以現場公告為主，恕不另行通知</p>
+        <p>*優惠期限 : 2019.01.01-2023.12.30，使用優惠前請電洽 劍湖山世界確認</p>
+        <p>網站連結：<a href="https://janfusun.com.tw/fancyworld.php" target="_blank">按此前往</a></p>
+      `;
+    } else if (locationId === 'leisure3') {
+        content = `
+        <h1>享玩桌遊</h1> 
+        <p>*桃園市桃園區大慶街356號裕和街17巷88。03-370-0260</p>
+        <p>*優惠內容:</p>
+        <p>憑校友證至店內消費，可享優惠:</p>
+        <p>1.生日當天壽星遊玩免費。(以身分證資料為準)</p>
+        <p>2.社團(各系學會、班級)4人以上訂位，(平日)包日100元/人、(假日)包日150元/人。</p>
+        <p>※各項優惠不可合併使用。且須主動出示有效證件。</p>
+        <p>※活動優惠範圍為店內桌遊遊玩、販售，不包含桌遊外租、集換式卡牌及其周邊商品。</p>
+        <p>*優惠期限 : 2020.08.01-2024.12.31 ，使用優惠前請電洽 享玩桌遊確認"</p>
+        <p>網站連結：<a href="https://www.have-fun.com.tw/" target="_blank">按此前往</a></p>
+      `;
+    } else if (locationId === 'leisure4') {
+        content = `
+        <h1>綠世界生態農場</h1>
+        <p>*新竹縣北埔鄉大湖村7鄰20號。03-5801000。<br> 
+        *優惠內容:<br>
+        憑校友證可享:<br>
+        1. 本人及其親友，限購五張優待半票。(最新半票之價格請參考綠世界官網)<br>
+        2. 至園區各商店消費，部分商品享9折優惠<br>
+        3. 特約廠商員工本人於生日當天入園，憑識別證和身分證件(身分證、駕照，需有照片能辨識為本人之證件)，可享免費入園優惠及贈送精美小禮物。<br>
+        (此優惠僅限特廠員工本人適用，且僅限生日當天入園，方享有此優惠。)<br>
+        *優惠期限 : 即日起~2024.12.31 ，使用優惠前請電洽 綠世界生態農場確認"</p>
+        <p>網站連結：<a href="https://www.green-world.com.tw/" target="_blank">按此前往</a></p>
+      `;
+    } else if (locationId === 'Cdiscount1') {
+        content = `
+        <h1>小木屋鬆餅｜中大店</h1>
+        <p>地址 : 桃園市中壢區中大路300號<br>
+        連絡電話 : 03-4265215<br>
+        優惠內容:出示有效校友證可享9折優惠！<br>
+        網站連結：<a href="https://www.shinemood2006.com/" target="_blank">按此前往</a></p>
+      `;
+    } else if (locationId === 'Cdiscount2') {
+        content = `
+        <h1>路易莎咖啡｜中央大學門市</h1>
+        <p>地址 : 桃園市中壢區中大路300號（中大松苑餐廳）<br>
+        連絡電話 : 03-4904613<br>
+        優惠內容:出示有效校友證可享9折優惠！<br>
+        網站連結：<a href="https://www.louisacoffee.co/" target="_blank">按此前往</a></p>
+      `;
+    } else if (locationId === 'Cdiscount3') {
+        content = `
+        <h1>敦煌書局｜中央營業所</h1>
+        <p>地址：桃園市中壢區中大路300號<br>
+        連絡電話 : 03-4201339<br>
+        優惠內容：憑校友證可享以下優惠<br>
+        1.中文書籍、文具 、原文小說、讀本及考試專用書-9折之優惠<br>
+        2.語言教材、特價/橘標商品及文藝購票恕不適用3.提供國外圖書商品客訂服務，並享有上述相同折扣(運費除外)<br>
+        網站連結：<a href="https://www.cavesbooks.com.tw/" target="_blank">按此前往</a></p>
+      `;
+    } else if (locationId === 'Cdiscount4') {
+        content = `
+        <h1>中大駐警隊｜校內停車優惠</h1>
+        <p>地址：桃園市中壢區中大路300號<br>
+        連絡電話：(03) 4227151；或03-4267144、校內分機57119(駐警隊)<br>
+        優惠內容：依國立中央大學校區車輛管理實施要點-107.1.1起實施<br>
+        
+        <br>12月起開始~ 校友停車優惠~<br>
+        一、車輛入校：請以「車牌辨識」方式 入校，校友須主動出示「校友證」，向崗哨人 員領取停車優惠券。<br>
+        二、車輛出校：離校前需先至全自動繳費機，按說明完成優惠券折抵操作後出場，方享本優惠。<br>
+        <br><br>
+        汽車停車收費標準：<br>
+        一、上班日 : 20 元/時<br>
+        二、假 日 ：40 元/時<br>
+        三、每日最高上限收費 200 元<br>
+        四、上班日及假日認定標準以行政院人事行政總處公告之行事曆為準。<br><br>
+        
+        網站連結：<a href="https://www.oga.ncu.edu.tw/86e45040" target="_blank">按此前往</a></p>
+      `;
+    } else if (locationId === 'Cdiscount5') {
+        content = `
+        <h1>全家便利商店｜校內門市</h1>
+        <p>*中壢中央一店：桃園市中壢區中大路300號松果餐廳<br>
+        *中壢中央二店：桃園市中壢區中大路300號男九餐廳<br>
+        *中壢中央三店：桃園市中壢區中大路300號松苑餐廳<br><br>
+        
+        優惠內容：在校內全家消費可享85折優惠<br><br>
+        
+        網站連結：<a href="https://www.family.com.tw/Marketing/" target="_blank">按此前往</a></p>
+      `;
+    } else if (locationId === 'Cdiscount6') {
+        content = `
+        <h1>桃園市中大國民運動中心</h1>
+        <p>地址：桃園市中壢區中大路300號<br>
+        電話：03-4227151<br>
+        優惠內容：憑學生證可享健身房一小時30元優惠<br><br>
+        
+        網站連結：<a href="https://sportscenter.ncu.edu.tw/" target="_blank">按此前往</a></p>
+      `;
+    }
+
   infoContainer.innerHTML = content;
 }
 
@@ -558,3 +705,5 @@ document.addEventListener("DOMContentLoaded", function () {
         main.classList.toggle('shrink');
     });
 });
+
+
