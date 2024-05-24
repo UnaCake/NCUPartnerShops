@@ -1,0 +1,68 @@
+-- html 頁面導航列
+
+<li class="nav-item">
+      <a class="nav-link collapsed" data-bs-target="#law-nav" data-bs-toggle="collapse" href="#">
+        <i class="bi bi-egg-fried"></i><span>餐廳</span><i class="bi bi-chevron-down ms-auto"></i>
+      </a>
+      <ul id="law-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+        <li>
+          <a id="law1" href="#">
+            <i class="bi bi-bookmark"></i><span>現代地政士事務所</span>
+          </a>
+        </li>
+        <li>
+          <a id="law2" href="#">
+            <i class="bi bi-bookmark"></i><span>現代物業經濟股份有限公司</span>
+          </a>
+        </li>
+      </ul>
+    </li>
+
+
+-- JS 互動
+
+var locations = [
+        {
+            id: 'law1', 
+            title: '現代地政士事務所',
+            subLocations: [
+                { lat: 25.059626086719824, lng: 121.52058634294356, title: '現代地政士事務所' }
+            ]
+        },
+        {
+            id: 'law2', 
+            title: '現代物業經濟股份有限公司',
+            subLocations: [
+                { lat: 25.059269693865286, lng: 121.5171528554879, title: '現代物業經濟股份有限公司' }
+            ]
+        },
+
+
+
+function updateInfoContainer(locationId) {
+    const infoContainer = document.getElementById('info-container');
+    let content = '';
+
+    if (locationId === 'law1') {
+        content = `
+        <h1>現代地政士事務所</h1>
+        <p>*台北市大同區南京西路18巷8之1號。02-25586666</p>
+        <p>優惠內容：憑校友證</p>
+        <p>    （一）買賣、繼承、贈與登記打七折。</p>
+        <p>    （二）法令諮詢打七折。（含買賣契約、遺囑、信託之擬定規劃）</p>
+        <p>    節稅規劃</p>
+        <p>優惠期限：2024/03/01~2026/12/31 ，使用優惠前請電洽 現代地政士事務所確認。</p>
+        <p>網站連結：<a href="https://in.ncu.edu.tw/alumni/web/benefits.php?type=legal%20administrative" target="_blank">按此前往</a></p>
+      `;
+    } else if (locationId === 'law2') {
+        content = `
+        <h1>享鴨</h1>
+        <p>* 台北市大同區南京西路18巷8之1號。02-25586666</p>
+        <p>優惠內容：憑校友證</p>
+        <p>    便宜的房子與土地出售時，優先通知。</p>
+        <p>優惠期限：2024/03/01~2026/12/31 ，使用優惠前請電洽 現代物業經濟股份有限公司確認。</p>
+        <p>網站連結：<a href="https://in.ncu.edu.tw/alumni/web/benefits.php?type=legal%20administrative" target="_blank">按此前往</a></p>
+      `;
+    } 
+    infoContainer.innerHTML = content;
+}
