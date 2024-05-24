@@ -19,6 +19,22 @@
     }
   }
 
+
+  /**
+   * Sidebar toggle
+   */
+  document.addEventListener('DOMContentLoaded', function () {
+  "use strict";
+  
+  const sidebarToggleBtn = document.querySelector('.toggle-sidebar-btn');
+  if (sidebarToggleBtn) {
+    sidebarToggleBtn.addEventListener('click', function(e) {
+      document.body.classList.toggle('toggle-sidebar');
+    });
+  }
+});
+
+
   /**
    * Easy event listener function
    */
