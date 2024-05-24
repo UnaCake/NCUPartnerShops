@@ -1,0 +1,50 @@
+<li class="nav-item">
+    <a class="nav-link collapsed" data-bs-target="#law-nav" data-bs-toggle="collapse" href="#">
+      <i class="bi bi-egg-fried"></i><span>學習</span><i class="bi bi-chevron-down ms-auto"></i>
+    </a>
+    <ul id="law-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+      <li>
+        <a id="learn1" href="#">
+          <i class="bi bi-bookmark"></i><span>黑嘉嘉圍棋教室</span>
+        </a>
+      </li>
+      <li>
+        <a id="learn2" href="#">
+          <i class="bi bi-bookmark"></i><span>台灣麥克圖書</span>
+        </a>
+      </li>
+    </ul>
+  </li>
+
+
+-- JS 互動
+
+var locations = [
+    {id: 'learn1',coords: { lat: 25.049995116725825, lng: 121.53277769363454 },title: '黑嘉嘉圍棋教室'},
+    {id: 'learn2',coords: { lat: 25.01137296652365, lng: 121.29866213770896 },title: '台灣麥克圖書'},
+
+
+
+function updateInfoContainer(locationId) {
+  const infoContainer = document.getElementById('info-container');
+  let content = '';
+
+  if (locationId === 'learn1') {
+      content = `
+      <h1>黑嘉嘉圍棋教室</h1>
+      <p>*台北市中山區松江路80號11樓B座。0956178599</p>
+      <p>優惠內容：憑校友證、學生證消費，並以中大email帳號申請即可享線上課程5折優惠。</p>
+      <p>優惠期限：2022.10.20~2024.12.31 ，使用優惠前請電洽 黑嘉嘉圍棋教室確認</p>
+      <p>網站連結：<a href="https://www.heijiajia.com.tw/" target="_blank">按此前往</a></p>
+    `;
+  } else if (locationId === 'learn2') {
+      content = `
+      <h1>台灣麥克圖書</h1>
+      <p>* 桃園區大興西路二段65號9樓。陳燕倫 0921460262</p>
+      <p>優惠內容：兒童,青少年圖書書籍提供69折優惠</p>
+      <p>優惠期限：自2021.10.01起至無期限 ，使用優惠前請電洽 台灣麥克圖書確認</p>
+      <p>網站連結：<a href="https://www.tmac.com.tw/home.asp" target="_blank">按此前往</a></p>
+    `;
+  } 
+  infoContainer.innerHTML = content;
+}
