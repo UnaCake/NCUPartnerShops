@@ -1,0 +1,123 @@
+<li class="nav-item">
+      <a class="nav-link collapsed" data-bs-target="#Cdiscount-nav" data-bs-toggle="collapse" href="#">
+        <i class="bi bi-handbag"></i>
+        <span>校內優惠</span><i class="bi bi-chevron-down ms-auto"></i>
+      </a>
+      <ul id="Cdiscount-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+        <li>
+          <a id="Cdiscount1" href="#">
+            <i class="bi bi-bookmark"></i><span>小木屋鬆餅（中大店）</span>
+          </a>
+        </li>
+        <li>
+          <a id="Cdiscount2" href="#">
+            <i class="bi bi-bookmark"></i><span>路易莎咖啡（中央大學門市）</span>
+          </a>
+        </li>
+        <li>
+          <a id="Cdiscount3" href="#">
+            <i class="bi bi-bookmark"></i><span>敦煌書局(中央營業所)</span>
+          </a>
+        </li>
+        <li>
+          <a id="Cdiscount4" href="#">
+            <i class="bi bi-bookmark"></i><span>【中大駐警隊】校內停車優惠</span>
+          </a>
+        </li>
+        <li>
+            <a id="Cdiscount5" href="#">
+              <i class="bi bi-bookmark"></i><span>全家便利商店(中壢中央一店、中壢中央二店、中壢中央三店)</span>
+            </a>
+        </li>
+        <li>
+            <a id="Cdiscount6" href="#">
+              <i class="bi bi-bookmark"></i><span>桃園市中大國民運動中心</span>
+            </a>
+        </li>
+      </ul>
+    </li>
+
+
+--------------------------------------
+
+{ id: 'Cdiscount1',coords: { lat: 24.974205760220315,lng: 121.19337989402285 },title: '小木屋鬆餅（中大店）'},
+        { id: 'Cdiscount2',coords: { lat: 24.96716507626938, lng: 121.1908416107259 },title: '路易莎咖啡（中央大學門市）'},
+        { id: 'Cdiscount3',coords: { lat: 24.966284937071343, lng: 121.19464267725955 },title: '敦煌書局(中央營業所)'},
+        { id: 'Cdiscount4',coords: { lat: 24.96837947902286, lng: 121.19529879538335 },title: '【中大駐警隊】校內停車優惠'},
+        { id: 'Cdiscount5',title: '全家便利商店(中壢中央一店、中壢中央二店、中壢中央三店)',
+        subLocations: [
+            { lat: 24.965827210517087, lng: 121.19551462721861, title: '中壢中央一店' },
+            { lat: 24.971017805385756, lng: 121.19584328200153, title: '中壢中央二店' },
+            { lat: 24.967458067248756, lng: 121.19090801760765, title: '中壢中央三店' }]},
+        
+            { id: 'Cdiscount6',coords: { lat: 24.970045209561047,lng: 121.18985659180765 },title: '桃園市中大國民運動中心'}
+------------------------------------------------------------------------------------------------------------------------------------
+
+ else if (locationId === 'Cdiscount1') {
+        content = `
+        <h1>小木屋鬆餅（中大店）</h1>
+        <p>地址 : 桃園市中壢區中大路300號<br>
+        連絡電話 : 03-4265215<br>
+        優惠內容:出示有效校友證可享9折優惠！<br>
+        網站連結：<a href="https://www.shinemood2006.com/" target="_blank">按此前往</a></p>
+      `;
+    } else if (locationId === 'Cdiscount2') {
+        content = `
+        <h1>路易莎咖啡（中央大學門市）</h1>
+        <p>地址 : 桃園市中壢區中大路300號（中大松苑餐廳）<br>
+        連絡電話 : 03-4904613<br>
+        優惠內容:出示有效校友證可享9折優惠！<br>
+        網站連結：<a href="https://www.louisacoffee.co/" target="_blank">按此前往</a></p>
+      `;
+    } else if (locationId === 'Cdiscount3') {
+        content = `
+        <h1>敦煌書局(中央營業所)</h1>
+        <p>地址：桃園市中壢區中大路300號<br>
+        連絡電話 : 03-4201339<br>
+        優惠內容：憑校友證可享以下優惠<br>
+        1.中文書籍、文具 、原文小說、讀本及考試專用書-9折之優惠<br>
+        2.語言教材、特價/橘標商品及文藝購票恕不適用3.提供國外圖書商品客訂服務，並享有上述相同折扣(運費除外)<br>
+        網站連結：<a href="https://www.cavesbooks.com.tw/" target="_blank">按此前往</a></p>
+      `;
+    } else if (locationId === 'Cdiscount4') {
+        content = `
+        <h1>【中大駐警隊】校內停車優惠</h1>
+        <p>地址：桃園市中壢區中大路300號<br>
+        連絡電話：(03) 4227151；或03-4267144、校內分機57119(駐警隊)<br>
+        優惠內容:<br>
+        
+        依國立中央大學校區車輛管理實施要點-107.1.1起實施<br>
+        <br>
+        12月起開始~ 校友停車優惠~<br>
+        一、車輛入校：請以「車牌辨識」方式 入校，校友須主動出示「校友證」，向崗哨人 員領取停車優惠券。<br>
+        二、車輛出校：離校前需先至全自動繳費機，按說明完成優惠券折抵操作後出場，方享本優惠。<br>
+        <br><br>
+        汽車停車收費標準：<br>
+        一、上班日 : 20 元/時<br>
+        二、假 日 ：40 元/時<br>
+        三、每日最高上限收費 200 元<br>
+        四、上班日及假日認定標準以行政院人事行政總處公告之行事曆為準。<br><br>
+        
+        網站連結：<a href="https://www.oga.ncu.edu.tw/86e45040" target="_blank">按此前往</a></p>
+      `;
+    } else if (locationId === 'Cdiscount5') {
+        content = `
+        <h1>全家便利商店(中壢中央一店、中壢中央二店、中壢中央三店)</h1>
+        <p>*中壢中央一店：桃園市中壢區中大路300號松果餐廳<br>
+        *中壢中央二店：桃園市中壢區中大路300號男九餐廳<br>
+        *中壢中央三店：桃園市中壢區中大路300號松苑餐廳<br><br>
+        
+        優惠內容：在校內全家消費可享85折優惠<br><br>
+        
+        網站連結：<a href="https://www.family.com.tw/Marketing/" target="_blank">按此前往</a></p>
+      `;
+    } else if (locationId === 'Cdiscount6') {
+        content = `
+        <h1>桃園市中大國民運動中心</h1>
+        <p>地址：桃園市中壢區中大路300號<br>
+        電話：03-4227151<br>
+        優惠內容：憑學生證可享健身房一小時30元優惠<br><br>
+        
+        網站連結：<a href="https://sportscenter.ncu.edu.tw/" target="_blank">按此前往</a></p>
+      `;
+    }
