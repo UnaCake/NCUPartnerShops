@@ -6,32 +6,32 @@
       </a>
       <ul id="products-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
         <li>
-          <a id="location1" href="#">
+          <a id="products1" href="#">
             <i class="bi bi-bookmark"></i><span>Homebox好博家</span>
           </a>
         </li>
         <li>
-          <a id="location2" href="#">
+          <a id="products2" href="#">
             <i class="bi bi-bookmark"></i><span>萬國通路股份有限公司</span>
           </a>
         </li>
         <li>
-          <a id="location3" href="#">
+          <a id="products3" href="#">
             <i class="bi bi-bookmark"></i><span>愛菲斯居家美學</span>
           </a>
         </li>
         <li>
-          <a id="location4" href="#">
+          <a id="products4" href="#">
             <i class="bi bi-bookmark"></i><span>朵法亞生活美學</span>
           </a>
         </li>
         <li>
-            <a id="location3" href="#">
+            <a id="products5" href="#">
               <i class="bi bi-bookmark"></i><span>台灣歐德家具股份有限公司</span>
             </a>
         </li>
         <li>
-            <a id="location3" href="#">
+            <a id="products6" href="#">
               <i class="bi bi-bookmark"></i><span>新視代影音科技</span>
             </a>
         </li>
@@ -44,17 +44,17 @@
 var locations = [
         
 {
-    id: 'location1',coords: { lat: 24.825877640590218, lng: 121.01570823159864 },title: 'homebox好博家'},
+    id: 'products1',coords: { lat: 24.825877640590218, lng: 121.01570823159864 },title: 'homebox好博家'},
 {
-    id: 'location2',title: '萬國通路股份有限公司'},
+    id: 'products2',title: '萬國通路股份有限公司'},
 {
-    id: 'location3',coords: { lat: 25.061831221171147, lng: 121.52547113379316 },title: '愛菲斯居家美學'},
+    id: 'products3',coords: { lat: 25.061831221171147, lng: 121.52547113379316 },title: '愛菲斯居家美學'},
 {
-    id: 'location4',coords: { lat: 25.00791464680665, lng: 121.48383054911483 },title: '朵法亞生活美學'},
+    id: 'products4',coords: { lat: 25.00791464680665, lng: 121.48383054911483 },title: '朵法亞生活美學'},
 {
-    id: 'location5',coords: { lat: 24.963459559429634, lng: 121.23257706444043 },title: '台灣歐德家具股份有限公司'},
+    id: 'products5',coords: { lat: 24.963459559429634, lng: 121.23257706444043 },title: '台灣歐德家具股份有限公司'},
 {
-    id: 'location6',coords: { lat: 25.02065581063814, lng: 121.21518044912008 },title: '新視代影音科技'},
+    id: 'products6',coords: { lat: 25.02065581063814, lng: 121.21518044912008 },title: '新視代影音科技'},
 
 
 
@@ -62,7 +62,7 @@ var locations = [
     const infoContainer = document.getElementById('info-container');
     let content = '';
 
-    if (locationId === 'location1') {
+    if (locationId === 'products1') {
         content = `
         <h1>Homebox好博家</h1>
         <p>*新竹縣竹北市縣政二路186號。0800-285-885</p>
@@ -77,7 +77,7 @@ var locations = [
         <p>優惠期限：即日起-2024.12.31 ，使用優惠前請電洽Homebox好博家確認。</p>
         <p>網站連結：<a href="https://www.homeboxshop.com.tw/" target="_blank">按此前往</a></p>
       `;
-    } else if (locationId === 'location2') {
+    } else if (locationId === 'products2') {
         content = `
         <h1>萬國通路股份有限公司</h1>
         <p>優惠內容：憑校友證
@@ -87,7 +87,7 @@ var locations = [
         <p>優惠期限： 2022.01.01-2024.12.31 ，使用優惠前請電洽 萬國通路股份有限公司確認。</p>
         <p>網站連結：<a href="https://tw.eminent.com/" target="_blank">按此前往</a></p>
       `;
-    } else if (locationId === 'location3') {
+    } else if (locationId === 'products3') {
         content = `
         <h1>愛菲斯居家美學</h1>
         <p>*新北市中和區板南路663號14樓。02-2778-0037。</p>
@@ -103,7 +103,7 @@ var locations = [
         <p>優惠期限 : 2023.02.01-2024.02.01 ，使用優惠前請電洽 朵法亞生活美學確認。</p>
         <p>網站連結：<a href="https://www.elvishome.com/" target="_blank">按此前往</a></p>
       `;
-    } else if (locationId === 'location4') {
+    } else if (locationId === 'products4') {
         content = `
         <h1>朵法亞生活美學</h1>
         <p>* 新北市中和區板南路663號14樓。02-2778-0037。</p>
@@ -119,7 +119,7 @@ var locations = [
         <p>優惠期限： 2023.02.01-2024.02.01 ，使用優惠前請電洽 朵法亞生活美學確認</p>
         <p>網站連結：<a href="http://www.darphia.com/" target="_blank">按此前往</a></p>
       `;
-    } else if (locationId === 'location5') {
+    } else if (locationId === 'products5') {
         content = `
         <h1>台灣歐德家具股份有限公司</h1>
         <p>*桃園縣中壢市延平路47號。03-4535778。</p>
@@ -127,7 +127,7 @@ var locations = [
         <p>優惠期限：2013.10.04-無期限 ，使用優惠前請電洽 台灣歐德家具股份有限公司確認。</p>
         <p>網站連結：<a href="https://www.order.com.tw/" target="_blank">按此前往</a></p>
       `;
-    } else if (locationId === 'location6') {
+    } else if (locationId === 'products6') {
         content = `
         <h1>新視代影音科技</h1>
         <p>*桃園市大園區領航北路四段12號。03-3811373。</p>
