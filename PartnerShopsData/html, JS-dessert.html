@@ -1,0 +1,92 @@
+<li class="nav-item">
+      <a class="nav-link collapsed" data-bs-target="#dessert-nav" data-bs-toggle="collapse" href="#">
+        <i class="bi bi-cup-hot"></i>
+        <span>甜點</span><i class="bi bi-chevron-down ms-auto"></i>
+      </a>
+      <ul id="dessert-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+        <li>
+          <a id="dessert1" href="#">
+            <i class="bi bi-bookmark"></i><span>肉桂捲製作所</span>
+          </a>
+        </li>
+        <li>
+          <a id="dessert2" href="#">
+            <i class="bi bi-bookmark"></i><span>萬益食品</span>
+          </a>
+        </li>
+        <li>
+          <a id="dessert3" href="#">
+            <i class="bi bi-bookmark"></i><span>伊莎貝爾</span>
+          </a>
+        </li>
+      </ul>
+    </li>
+
+{ id: 'dessert1', title: '肉桂捲製作所',
+  subLocations: [
+    { lat: 25.078554895652697, lng: 121.57798732472378, title: '內湖門市' },
+    { lat: 25.058396706464997, lng: 121.51912441545265, title: '雙連門市' },
+    { lat: 25.000327848568013, lng: 121.55664418465814, title: '萬芳門市' }
+  ]
+},
+{ id: 'dessert2', title: '萬益食品',
+  subLocations: [
+            { lat: 24.121839, lng: 120.671673, title: '總店：台中市中區中山路213號' },
+            { lat: 24.132217, lng: 120.643022, title: '南屯分店：台中市南屯區五權西路二段673號' }
+]
+},
+{ id: 'dessert3', title: '伊莎貝爾',
+  subLocations: [
+    { lat: 25.078554, lng: 121.577987, title: '台北忠孝店' },
+    { lat: 25.060148, lng: 121.520203, title: '台北中山店' },
+    { lat: 25.009437, lng: 121.539837, title: '新北板橋店' },
+    { lat: 25.065698, lng: 121.501854, title: '新北三重店' },
+    { lat: 24.956766, lng: 121.225972, title: '桃園中山店' },
+    { lat: 24.990792, lng: 121.311621, title: '中壢延平店' },
+    { lat: 24.804636, lng: 120.965716, title: '新竹中正店' },
+    { lat: 24.144380, lng: 120.681091, title: '台中三民店' },
+    { lat: 24.082927, lng: 120.541147, title: '員林中正店' },
+    { lat: 23.500486, lng: 120.446501, title: '嘉義中山店' },
+    { lat: 22.994714, lng: 120.214462, title: '台南東寧店' },
+    { lat: 22.624967, lng: 120.301636, title: '高雄中正店' },
+    { lat: 22.666692, lng: 120.308954, title: '屏東民生店' }
+  ]
+}
+
+
+} else if (locationId === 'dessert1') {
+        content = `
+        <h1>肉桂捲製作所</h1>
+        <p>*內湖門市：台北市內湖區內湖路一段600巷8號1樓。<br>電話：02-22505431。</p>
+        <p>*雙連門市：台北市大同區雙連街19號1樓。<br>電話：02-25575005。</p>
+        <p>*萬芳門市：台北市文山區興隆路三段79巷1號。</p>
+        <p>優惠內容：<br>
+        憑「國立中央大學校友證」消費可享<br>
+        1. 享肉桂捲製作所全店”正價餐點9折優惠”<br>
+        2. 僅限台北地區：當日滿20顆即享免費外送服務（需至少提前一日提出訂單需求）<br>
+        3. 其他縣市若需訂購可使用官網訂購，冷凍宅配同樣享有”9折優惠”</p>
+        <p>優惠期限 : 2024.2.5- 無終止日期 ，使用優惠前請電洽 肉桂捲製作所確認</p>
+    　`;
+    } else if (locationId === 'dessert2') {
+    content = `
+        <h1>萬益食品</h1>
+        <p>*地址 : 各店資訊請上網萬益食品查詢</p>
+        <p>優惠內容：<br>
+        1.全體員工購買乙方肉品、豆干類產品，得享有9折之優惠（特價品除外），但不得與其他促銷方式併用而重複享有折扣。<br>
+        2.單次消費滿2000元(含稅)，可享以個人資格申請VIP貴賓卡。</p>
+        <p>優惠期限 : 2014.01.08-無期限 ，使用優惠前請電洽 萬益食品確認</p>
+    `;
+} else if (locationId === 'dessert3') {
+        content = `
+        <h1>伊莎貝爾</h1>
+        <p>*地址 : 各店資訊請上網萬益食品查詢</p>
+        <p>優惠內容：憑校友證消費，可享:<br>
+        1. 至全省直營門市消費，常溫類蛋糕、常溫類彌月、伴手禮享有85折優惠。<br>
+        2. 訂購伊莎貝爾及皇樓喜餅可再享有多2%點數兌換之優惠。(上述優惠不得與其他折扣及優惠方案合併共同使用)<br>
+        *結帳前應主動出示證件(含校友證、教職員證)，或相關證件(有國立中央大學字樣)</p>
+        <p>優惠期限 : 2016.01.11-2029.12.31 ，使用優惠前請電洽 伊莎貝爾確認</p>
+        <p>網站連結：<a href="https://www.isabelle.com.tw/" target="_blank">按此前往</a></p>
+      `;
+}
+
+
